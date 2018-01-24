@@ -25,7 +25,7 @@ public class CamelCaserTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testCharacter() {
+    public void testSpecialCharacter() {
         CamelCaser.camelCase("My name is @Shivani");
     }
 
@@ -73,7 +73,5 @@ public class CamelCaserTest {
     public void nullInput() {
         CamelCaser.camelCase(null);
     }
-
-
 
 }

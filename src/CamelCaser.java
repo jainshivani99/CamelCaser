@@ -1,6 +1,7 @@
 public class CamelCaser {
     public static String camelCase(String inputString){
-        String characterRegex = "/^[!@#$%^&*()_+\\-=\\[\\]{};':|,.\"<>/?]*$/";
+        //String characterRegex = "/^[!@#$%^&*()_+\\-=\\[\\]{};':|,.\"<>/?]*$/";
+        String regex = "[!@#%&,^*()_+={};':|.<>?/]";
         if (inputString == null) {
             throw new IllegalArgumentException(ErrorConstants.INPUT_NULL);
         }
@@ -10,11 +11,14 @@ public class CamelCaser {
         if (inputString.substring(0,1).equals(" ")) {
             throw new IllegalArgumentException("Invalid Input");
         }
-        if (inputString.matches(characterRegex)) {
-            throw new IllegalArgumentException(ErrorConstants.INVALID_CHARACTER);
-        }
         if (inputString.substring(0,1).matches("[0-9]")) {
             throw new IllegalArgumentException(ErrorConstants.INVALID_FORMAT);
+        }
+        for (int i = 0; i < inputString.length(); i++) {
+            String current = inputString.substring(i, i+1);
+            if (current.matches(regex)) {
+                throw new IllegalArgumentException(ErrorConstants.INVALID_CHARACTER);
+            }
         }
         inputString = inputString.toLowerCase();
         String[] words = inputString.split(" ");
