@@ -44,6 +44,11 @@ public class CamelCaserTest {
         assertEquals("this", CamelCaser.camelCase("This"));
     }
 
+    @Test
+    public void oneWordCaps() {
+        assertEquals("this", CamelCaser.camelCase("THIS"));
+    }
+
     @Test (expected = IllegalArgumentException.class)
     public void unauthorizedDigit() {
         CamelCaser.camelCase("5Shivani");
@@ -73,5 +78,7 @@ public class CamelCaserTest {
     public void nullInput() {
         CamelCaser.camelCase(null);
     }
+
+
 
 }
