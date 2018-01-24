@@ -1,8 +1,14 @@
 public class CamelCaser {
     public static String camelCase(String inputString){
         String characterRegex = "/^[!@#$%^&*()_+\\-=\\[\\]{};':|,.\"<>/?]*$/";
-        if (inputString.equals(null)) {
+        if (inputString == null) {
             throw new IllegalArgumentException(ErrorConstants.INPUT_NULL);
+        }
+        if (inputString.equals("")) {
+            throw new IllegalArgumentException("Invalid Input");
+        }
+        if (inputString.substring(0,1).equals(" ")) {
+            throw new IllegalArgumentException("Invalid Input");
         }
         if (inputString.matches(characterRegex)) {
             throw new IllegalArgumentException(ErrorConstants.INVALID_CHARACTER);
