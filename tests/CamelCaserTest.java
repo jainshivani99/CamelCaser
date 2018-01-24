@@ -79,6 +79,13 @@ public class CamelCaserTest {
         CamelCaser.camelCase(null);
     }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void onlyDigits() {
+        CamelCaser.camelCase("1234");
+    }
 
-
+    @Test (expected = IllegalArgumentException.class)
+    public void severalIllegalCharacters() {
+        CamelCaser.camelCase("$%@&");
+    }
 }
